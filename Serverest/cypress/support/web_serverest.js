@@ -13,8 +13,18 @@ Cypress.Commands.add('Cadastra_Usuario', ()=>{
     cy.get('#email').type('qa@qa.com')
     cy.get('#password').type('123456')
     cy.get('#administrador').check()
+    cy.intercept('POST', 'https://serverest.dev/login', { statusCode: 200 }).as('post02')
+    cy.intercept('GET', 'https://serverest.dev/usuarios', { statusCode: 200 }).as('get01')
     cy.contains("button","Cadastrar").click()
+    cy.wait('@post02') 
+    cy.wait('@get01') 
     cy.contains('Cadastro realizado com sucesso').should('be.visible')
+})
+Cypress.Commands.add('Lista_Usuario_intercept', ()=>{
+    cy.visit('https://front.serverest.dev/admin/home')
+    cy.intercept('GET', 'https://serverest.dev/usuarios', { statusCode: 200 }).as('GetUser')
+    cy.get('[data-testid="listarUsuarios"]').click()
+    cy.wait('@GetUser')   
 })
 Cypress.Commands.add('Lista_Usuario', ()=>{
     cy.visit('https://front.serverest.dev/admin/home')
@@ -42,6 +52,12 @@ Cypress.Commands.add('Listar_Produtos', ()=>{
     cy.contains("td","PS5 + 2 Controles + Jogo").should('be.visible')
     cy.contains("td","600").should('be.visible')
 })
+Cypress.Commands.add('Listar_Produtos_intercept', ()=>{
+    cy.visit('https://front.serverest.dev/admin/home')
+    cy.intercept('GET', 'https://serverest.dev/produtos', { statusCode: 200 }).as('GetProd')
+    cy.get('[data-testid="listarProdutos"]').click()
+    cy.wait('@GetProd')
+})
 Cypress.Commands.add('Relatórios', ()=>{
     cy.visit('https://front.serverest.dev/admin/home')
     cy.contains("Ver").click()
@@ -61,6 +77,24 @@ Cypress.Commands.add('Excluir_Usuário', ()=>{
     cy.get(':nth-child(665) > :nth-child(3)')
       .invoke('val').then((valor)=>{const senha = valor;
       expect(senha).to.equal('')}) 
+})
+Cypress.Commands.add('Excluir_Usuário_intercept', ()=>{
+    cy.visit('https://front.serverest.dev/admin/home')
+    cy.intercept('GET', 'https://serverest.dev/usuarios', { statusCode: 200 }).as('GetDelete')
+    cy.get('[data-testid="listarUsuarios"]').click()
+    cy.wait('@GetDelete')
+})
+Cypress.Commands.add('Cadastra_Usuario_intercept', ()=>{
+    cy.visit('https://front.serverest.dev/login')
+    cy.contains('Login').should('be.visible')
+    cy.contains('Cadastre-se').click()
+    cy.get('#nome').type('TESTE QA')
+    cy.get('#email').type('qa@qa.com')
+    cy.get('#password').type('123456')
+    cy.get('#administrador').check()
+    cy.intercept('POST', 'https://serverest.dev/usuarios', { statusCode: 400 }).as('PostError')
+    cy.contains("button","Cadastrar").click()
+    cy.wait('@PostError')   
 })
 Cypress.Commands.add('Cadastra_Usuario_inv', ()=>{
     cy.visit('https://front.serverest.dev/login')
