@@ -178,7 +178,7 @@ Cypress.Commands.add('cad_carr_inv', ()=>{
         }
         }).then((response) => {
             expect(response.status).to.eq(400);
-            expect(response.body.message).to.eq('Não é permitido possuir produto duplicado | Não é permitido ter mais de 1 carrinho | Produto não encontrado | Produto não possui quantidade suficiente')});
+            expect(response.body.message).to.eq('Não é permitido ter mais de 1 carrinho')});
 })
 Cypress.Commands.add('cad_carr_inv_2', ()=>{
     cy.api({
@@ -228,7 +228,7 @@ Cypress.Commands.add('del_carr', ()=>{
         }
     }).then((response) => {
         expect(response.status).to.eq(200);
-        expect(response.body.message).to.eq('Registro excluído com sucesso | Não foi encontrado carrinho para esse usuário')});
+        expect(response.body.message).to.eq('Registro excluído com sucesso. Estoque dos produtos reabastecido')});
 })
 Cypress.Commands.add('del_prod', ()=>{
     cy.api({
@@ -239,7 +239,7 @@ Cypress.Commands.add('del_prod', ()=>{
         }
     }).then((response) => {
         expect(response.status).to.eq(200);
-        expect(response.body.message).to.eq('Registro excluído com sucesso | Nenhum registro excluído')});
+        expect(response.body.message).to.eq('Registro excluído com sucesso')});
 })
 Cypress.Commands.add('del_user', ()=>{
     cy.api({
@@ -271,7 +271,7 @@ Cypress.Commands.add('del_prod_inv', ()=>{
         }
     }).then((response) => {
         expect(response.status).to.eq(401);
-        expect(response.body.message).to.eq('Não é permitido excluir produto que faz parte de carrinho')});
+        expect(response.body.message).to.eq('Token de acesso ausente, inválido, expirado ou usuário do token não existe mais')});
 })
 Cypress.Commands.add('del_user_inv', ()=>{
     cy.api({
@@ -280,5 +280,5 @@ Cypress.Commands.add('del_user_inv', ()=>{
         url: `https://serverest.dev/usuarios/123456`
     }).then((response) => {
         expect(response.status).to.eq(200);
-        expect(response.body.message).to.eq('Não é permitido excluir usuário com carrinho cadastrado')});
+        expect(response.body.message).to.eq('Nenhum registro excluído')});
 })
