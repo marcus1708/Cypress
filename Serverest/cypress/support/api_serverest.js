@@ -15,7 +15,8 @@ Cypress.Commands.add('cad_user_existente', (cria_usuario)=>{
         failOnStatusCode: false,
         body:cria_usuario
         }).then((response) => {
-            expect(response.status).to.eq(400);});
+            expect(response.status).to.eq(400)
+            expect(response.body.message).to.eq('Este email já está sendo usado')});
 })
 Cypress.Commands.add('login', (login)=>{
     cy.api({
@@ -26,6 +27,17 @@ Cypress.Commands.add('login', (login)=>{
           expect(response.status).to.eq(200);
           expect(response.body.message).to.eq('Login realizado com sucesso')
           Cypress.env('token', response.body.authorization);});
+})
+Cypress.Commands.add('login_erro', (login_erro)=>{
+    cy.api({
+        method: 'POST',
+        url: 'https://serverest.dev/login',
+        failOnStatusCode: false,
+        body:login_erro
+      }).then(function(response){
+          expect(response.status).to.eq(401);
+          expect(response.body.message).to.eq('Email e/ou senha inválidos')
+          });
 })
 Cypress.Commands.add('cad_prod', (cria_produto)=>{
     cy.api({
@@ -119,7 +131,29 @@ Cypress.Commands.add('atual_user_inv', (atual_usuario)=>{
             authorization: Cypress.env('token')
         }
         }).then((response) => {
-            expect(response.status).to.eq(400);});
+            expect(response.status).to.eq(400)
+            expect(response.body.message).to.eq('Este email já está sendo usado');});
+})
+Cypress.Commands.add('atual_user_inv_2', (atual_usuario_inv)=>{
+    cy.api({
+        method: 'PUT',
+        url: `https://serverest.dev/usuarios/11`,
+        body: atual_usuario_inv,
+        headers: {
+            authorization: Cypress.env('token')
+        }
+        }).then((response) => {
+            expect(response.status).to.eq(201)
+            expect(response.body.message).to.eq('Cadastro realizado com sucesso')
+            Cypress.env('idinv', response.body._id);});
+})
+Cypress.Commands.add('del_user_inv_3', ()=>{
+    cy.api({
+        method: 'DELETE',
+        url: `https://serverest.dev/usuarios/${Cypress.env('idinv')}`
+    }).then((response) => {
+        expect(response.status).to.eq(200)
+        expect(response.body.message).to.eq('Registro excluído com sucesso');});
 })
 Cypress.Commands.add('atual_prod', (atual_produto)=>{
     cy.api({
@@ -281,4 +315,13 @@ Cypress.Commands.add('del_user_inv', ()=>{
     }).then((response) => {
         expect(response.status).to.eq(200);
         expect(response.body.message).to.eq('Nenhum registro excluído')});
+})
+Cypress.Commands.add('del_user_inv_2', ()=>{
+    cy.api({
+        method: 'DELETE',
+        failOnStatusCode: false,
+        url: `https://serverest.dev/usuarios/0uxuPY0cbmQhpEz1`
+    }).then((response) => {
+        expect(response.status).to.eq(400);
+        expect(response.body.message).to.eq('Não é permitido excluir usuário com carrinho cadastrado')});
 })
