@@ -24,6 +24,7 @@ Cypress.Commands.add('login', (login)=>{
         body:login
       }).then(function(response){
           expect(response.status).to.eq(200);
+          expect(response.body.message).to.eq('Login realizado com sucesso')
           Cypress.env('token', response.body.authorization);});
 })
 Cypress.Commands.add('cad_prod', (cria_produto)=>{
@@ -36,6 +37,7 @@ Cypress.Commands.add('cad_prod', (cria_produto)=>{
         }
         }).then((response) => {
             expect(response.status).to.eq(201);
+            expect(response.body.message).to.eq('Cadastro realizado com sucesso')
             Cypress.env('id_p', response.body._id);});
 })
 Cypress.Commands.add('cad_prod_existente', (cria_produto)=>{
@@ -48,7 +50,8 @@ Cypress.Commands.add('cad_prod_existente', (cria_produto)=>{
             authorization: Cypress.env('token')
         }
         }).then((response) => {
-            expect(response.status).to.eq(400);});
+            expect(response.status).to.eq(400);
+            expect(response.body.message).to.eq('Já existe produto com esse nome')});
 })
 Cypress.Commands.add('busc_user', ()=>{
     cy.api({
@@ -156,6 +159,7 @@ Cypress.Commands.add('cad_carr', ()=>{
         }
         }).then((response) => {
             expect(response.status).to.eq(201);
+            expect(response.body.message).to.eq('Cadastro realizado com sucesso')
             Cypress.env('id_c', response.body._id);});
 })
 Cypress.Commands.add('cad_carr_inv', ()=>{
@@ -173,7 +177,23 @@ Cypress.Commands.add('cad_carr_inv', ()=>{
             authorization: Cypress.env('token')
         }
         }).then((response) => {
-            expect(response.status).to.eq(400);});
+            expect(response.status).to.eq(400);
+            expect(response.body.message).to.eq('Não é permitido possuir produto duplicado | Não é permitido ter mais de 1 carrinho | Produto não encontrado | Produto não possui quantidade suficiente')});
+})
+Cypress.Commands.add('cad_carr_inv_2', ()=>{
+    cy.api({
+        method: 'POST',
+        url: 'https://serverest.dev/carrinhos',
+        failOnStatusCode: false,
+        body:{
+            "produtos":[{   
+                "idProduto": Cypress.env('id_p'),
+                "quantidade": 1
+            }]
+        }
+        }).then((response) => {
+            expect(response.status).to.eq(401);
+            expect(response.body.message).to.eq('Token de acesso ausente, inválido, expirado ou usuário do token não existe mais')});
 })
 Cypress.Commands.add('list_carr', ()=>{
     cy.api({
@@ -195,7 +215,9 @@ Cypress.Commands.add('carr_id_inv', ()=>{
         failOnStatusCode: false,
         url: `https://serverest.dev/carrinhos/123456`
     }).then((response) => {
-        expect(response.status).to.eq(400);});
+        expect(response.status).to.eq(400);
+        expect(response.body.message).to.eq('Carrinho não encontrado')
+        });
 })
 Cypress.Commands.add('del_carr', ()=>{
     cy.api({
@@ -205,7 +227,8 @@ Cypress.Commands.add('del_carr', ()=>{
             authorization: Cypress.env('token')
         }
     }).then((response) => {
-        expect(response.status).to.eq(200);});
+        expect(response.status).to.eq(200);
+        expect(response.body.message).to.eq('Registro excluído com sucesso | Não foi encontrado carrinho para esse usuário')});
 })
 Cypress.Commands.add('del_prod', ()=>{
     cy.api({
@@ -215,7 +238,8 @@ Cypress.Commands.add('del_prod', ()=>{
             authorization: Cypress.env('token')
         }
     }).then((response) => {
-        expect(response.status).to.eq(200);});
+        expect(response.status).to.eq(200);
+        expect(response.body.message).to.eq('Registro excluído com sucesso | Nenhum registro excluído')});
 })
 Cypress.Commands.add('del_user', ()=>{
     cy.api({
@@ -234,7 +258,8 @@ Cypress.Commands.add('del_carr_inv', ()=>{
             authorization: Cypress.env('token')
         }
     }).then((response) => {
-        expect(response.status).to.eq(401);});
+        expect(response.status).to.eq(401);
+        expect(response.body.message).to.eq('Token de acesso ausente, inválido, expirado ou usuário do token não existe mais')});
 })
 Cypress.Commands.add('del_prod_inv', ()=>{
     cy.api({
@@ -245,7 +270,8 @@ Cypress.Commands.add('del_prod_inv', ()=>{
             authorization: Cypress.env('token')
         }
     }).then((response) => {
-        expect(response.status).to.eq(401);});
+        expect(response.status).to.eq(401);
+        expect(response.body.message).to.eq('Não é permitido excluir produto que faz parte de carrinho')});
 })
 Cypress.Commands.add('del_user_inv', ()=>{
     cy.api({
@@ -253,5 +279,6 @@ Cypress.Commands.add('del_user_inv', ()=>{
         failOnStatusCode: false,
         url: `https://serverest.dev/usuarios/123456`
     }).then((response) => {
-        expect(response.status).to.eq(200);});
+        expect(response.status).to.eq(200);
+        expect(response.body.message).to.eq('Não é permitido excluir usuário com carrinho cadastrado')});
 })
