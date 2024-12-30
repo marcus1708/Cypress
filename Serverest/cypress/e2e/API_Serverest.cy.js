@@ -60,6 +60,9 @@ describe('API do Serverest', () =>{
     it('Teste de Falha - Cadastra Carrinho já existente', () => {
         cy.cad_carr_inv()
     })
+    it('Teste de Falha - Token Ausente', () => {
+        cy.cad_carr_inv_2()
+    })
     it('Busca Carrinho Lista', () => {
         cy.list_carr()
     })
