@@ -5,6 +5,7 @@ Cypress.Commands.add('cad_user', (cria_usuario)=>{
         body:cria_usuario
         }).then((response) => {
             expect(response.status).to.eq(201);
+            expect(response.body.message).to.eq('Cadastro realizado com sucesso')
             Cypress.env('id', response.body._id);});
 })
 Cypress.Commands.add('cad_user_existente', (cria_usuario)=>{
@@ -102,7 +103,8 @@ Cypress.Commands.add('atual_user', (atual_usuario)=>{
             authorization: Cypress.env('token')
         }
         }).then((response) => {
-            expect(response.status).to.eq(200);});
+            expect(response.status).to.eq(200)
+            expect(response.body.message).to.eq('Registro alterado com sucesso');});
 })
 Cypress.Commands.add('atual_user_inv', (atual_usuario)=>{
     cy.api({
@@ -220,7 +222,8 @@ Cypress.Commands.add('del_user', ()=>{
         method: 'DELETE',
         url: `https://serverest.dev/usuarios/${Cypress.env('id')}`
     }).then((response) => {
-        expect(response.status).to.eq(200);});
+        expect(response.status).to.eq(200)
+        expect(response.body.message).to.eq('Registro excluído com sucesso');});
 })
 Cypress.Commands.add('del_carr_inv', ()=>{
     cy.api({
