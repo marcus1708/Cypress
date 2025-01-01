@@ -7,10 +7,7 @@ const cria_produto = require('../fixtures/cria_produto.json')
 const atual_produto = require('../fixtures/atual_produto.json')
 
 describe('API do Serverest', () =>{
-    let id; 
-    let id_p; 
-    let id_c;
-    
+
     it('Cadastra Usuário', () => {
         cy.cad_user(cria_usuario)
     })
