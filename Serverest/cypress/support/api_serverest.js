@@ -325,3 +325,24 @@ Cypress.Commands.add('del_user_inv_2', ()=>{
         expect(response.status).to.eq(400);
         expect(response.body.message).to.eq('Não é permitido excluir usuário com carrinho cadastrado')});
 })
+Cypress.Commands.add('del_prod_inv_0', ()=>{
+    cy.api({
+        method: 'DELETE',
+        url: `https://serverest.dev/produtos/${Cypress.env('id_p')}`,
+        failOnStatusCode: false,
+        headers: {
+            authorization: Cypress.env('token')
+        }
+    }).then((response) => {
+        expect(response.status).to.eq(400);
+        expect(response.body.message).to.eq('Não é permitido excluir produto que faz parte de carrinho')});
+})
+Cypress.Commands.add('del_user_inv_0', ()=>{
+    cy.api({
+        method: 'DELETE',
+        url: `https://serverest.dev/usuarios/${Cypress.env('id')}`,
+        failOnStatusCode: false
+    }).then((response) => {
+        expect(response.status).to.eq(400)
+        expect(response.body.message).to.eq('Não é permitido excluir usuário com carrinho cadastrado');});
+})
