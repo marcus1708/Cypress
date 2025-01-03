@@ -7,7 +7,6 @@ const cria_produto = require('../fixtures/cria_produto.json')
 const atual_produto = require('../fixtures/atual_produto.json')
 
 describe('API do Serverest', () =>{
-
     it('Cadastra Usuário', () => {
         cy.cad_user(cria_usuario)
     })
@@ -20,6 +19,12 @@ describe('API do Serverest', () =>{
     it('Realiza Login -Email ou senha inválido', () => {
         cy.login_erro(login_erro)
     })         
+    it('Cadastra Produtos', () => {
+        cy.cad_prod(cria_produto)
+    })
+    it('Teste de Falha - Cadastra Produto já existente', () => {
+        cy.cad_prod_existente(cria_produto)
+    })
     it('Busca Usuário Lista', () => {
         cy.busc_user()
     })
@@ -29,21 +34,6 @@ describe('API do Serverest', () =>{
     it('Teste de Falha - Busca Usuário ID inválido', () => {
         cy.busc_user_id_inv()
     })
-        it('Atualiza Usuário', () => {
-        cy.atual_user(atual_usuario)
-    })
-    it('Teste de Falha - Atualiza Usuário com ID inexistente', () => {
-        cy.atual_user_inv_2(atual_usuario_inv)
-    })
-    it('Teste de Falha - Atualiza Usuário inválido', () => {
-        cy.atual_user_inv(atual_usuario)
-    })
-    it('Cadastra Produtos', () => {
-        cy.cad_prod(cria_produto)
-    })
-    it('Teste de Falha - Cadastra Produto já existente', () => {
-        cy.cad_prod_existente(cria_produto)
-    })
     it('Busca Produtos Lista', () => {
         cy.busc_prod()
     })
@@ -52,6 +42,15 @@ describe('API do Serverest', () =>{
     })
     it('Teste de Falha - Busca Produto ID inválido', () => {
         cy.busc_prod_id_inv()
+    })
+    it('Atualiza Usuário', () => {
+        cy.atual_user(atual_usuario)
+    })
+    it('Teste de Falha - Atualiza Usuário com ID inexistente', () => {
+        cy.atual_user_inv_2(atual_usuario_inv)
+    })
+    it('Teste de Falha - Atualiza Usuário inválido', () => {
+        cy.atual_user_inv(atual_usuario)
     })
     it('Atualiza Produtos', () => {
         cy.atual_prod(atual_produto)
@@ -77,28 +76,31 @@ describe('API do Serverest', () =>{
     it('Teste de Falha - Busca Carrinho com ID inválido', () => {
         cy.carr_id_inv()
     })
+    it('Teste de Falha - Exclui Produtos com carrinho cadastrado', () => {
+        cy.del_prod_inv_0()
+    })
     it('Teste de Falha - Excluir Usuário com carrinho cadastrado', () => {
-        cy.del_user_inv_2()
+        cy.del_user_inv_0()
     })
     it('Exclui Carrinho', () => {
         cy.del_carr()
     })
-    it('Teste de Falha - Exclui Carrinho já deletado anteriormente', () => {
-        cy.del_carr_inv()
-    })
     it('Exclui Produtos', () => {
         cy.del_prod()
-    })
-    it('Teste de Falha - Exclui Produtos já deletado anteriormente', () => {
-        cy.del_prod_inv()
     })
     it('Exclui Usuário', () => {
         cy.del_user()
     })
+    it('Teste de Falha - Exclui Carrinho já deletado anteriormente', () => {
+        cy.del_carr_inv()
+    })
+    it('Teste de Falha - Exclui Produtos já deletado anteriormente', () => {
+        cy.del_prod_inv()
+    })
     it('Teste de Falha - Exclui Usuário já deletado anteriormente', () => {
         cy.del_user_inv()
     })
-    it('Exclui Usuário do Teste Atualiza Usuário com ID inexistente', () => {
+    it('Teste de Falha - Exclui Usuário do Teste Atualiza Usuário com ID inexistente', () => {
         cy.del_user_inv_3()
     })
 })
