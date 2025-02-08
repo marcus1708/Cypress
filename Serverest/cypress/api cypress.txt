@@ -1,0 +1,159 @@
+
+================================================
+Introdução
+================================================
+Olá à todos, sejam bem vindos ao curso de Automação de testes de API na linguagem Cypress, me chamo Marcus Vinicius e
+
+estarei conduzindo este curso
+
+para as pessoas que já estao na area de QA assim como eu e para aquelas que desejam ingressar na área de automaçao de testes.
+
+================================================
+O que é API ?
+================================================
+Uma API (Interface de Programação de Aplicações) é um conjunto de regras e definições que permite que diferentes sistemas ou programas se comuniquem entre si. 
+
+Ela funciona como uma "ponte" que permite que um software peça informações ou serviços de outro software, sem precisar entender o funcionamento interno dele.
+
+Sua estrutura é composta por method, url, body, headers e response
+
+method é o comando dado para a api ao qual irá definir a ação, neste caso temos 5 exemplos: POST, GET, PUT, PATCH e DELETE
+
+url é o enredeço ou link que a api vai acessar, ela pode conter algum valor ja existente de outra api ou nao
+
+body é onde estão os dados a serem gravados pela api no momento da execução
+
+headers sao dados pre-fixados que juntamente com o body complementam a ação da api
+
+response é onde validamos o codigo de retorno da execução da api e verificamos se a mesma foi executada com sucesso ou nao
+
+================================================
+O que é Cypress ?
+================================================
+
+O Cypress é uma ferramenta de automação para testes de aplicações web. 
+Ele permite que desenvolvedores escrevam e executem testes de integração e end-to-end de forma rápida e fácil, com um foco na confiabilidade e na simplicidade.
+O Cypress roda diretamente no navegador, proporcionando um controle maior sobre os testes.
+
+================================================
+Apresentação do Sistema Serverest - Back-End
+================================================
+
+Agora vou apresentar para voces o site que está documentado a api que iremos utilizar neste curso.
+
+Ele se chama Serverest, se trata de um e-commerce e é composto por uma área de Login, uma área de Usuários, outra de Produtos e por fim a de Carrinhos
+
+
+================================================
+Como instalar e configurar o Cypress
+================================================
+
+O cypress é uma linguagem que depende do node para existir, entao vamos primeiro instalar o node.
+
+para baixar o node, basta ir no site oficial da linguagem e baixar o node.js
+
+para instalar, basta seguir o passo a passo e clicar em OK
+
+no final, vamos abrir o terminal e digitar npm install cypress para instalar o cypress
+
+Pronto, agora temos o cypress instalado na máquina
+
+Para configurar um projeto do cypress do zero, vamos seguir o passo a passo
+
+Vamos criar uma pasta onde será o repositorio do nosso projeto. Sugiro que seja um nome curto mas de fácil memorização
+
+Ex: Autom
+
+Vamos abrir a pasta e abrir o terminal nela. Agora vamos dar o comando npx cypress open, ele irá executar o cypress dentro dessa pasta
+
+Agora, vamos seguir esse passo a passo ...
+
+Pronto, ja temos o projeto base criado dentro da pasta.
+
+================================================
+Como instalar e configurar o Vscode
+================================================
+
+Para baixar o Vscode, basta persquisar por vscode no google e ele irá trazer o site oficial. Lá, realizamos o download do programa.
+
+Para instalar, é só seguir as instruções e ao final teremos o vscode instalado na maquina.
+
+Para configuar, podemos adicionar a extensão Cypress ao vscode.
+
+Agora, vamos adicionar a pasta que criamos na aula anterior no Vscode. Para isso, clico em Arquivo e depois em Adicionar pasta ao Workspace
+
+Pronto, temos a pasta do projeto adicionada com sucesso ao vscode
+
+================================================
+Requisição POST
+================================================
+
+A requisição POST serve para registrar um dado na base recebido pela API.
+
+A estrutura do código em cypress é composta por method,url,body e headers
+
+Criando uma requisição POST para Usuários...
+
+================================================
+Requisição GET
+================================================
+
+A requisição GET serve para buscar um dado na base recebido pela API.
+
+A estrutura do código em cypress é composta por method,url e headers
+
+================================================
+Requisição PUT
+================================================
+
+A requisição PUT serve para atualizar por completo um dado na base recebido pela API.
+
+A estrutura do código em cypress é composta por method,url,body e headers
+
+================================================
+Requisição DELETE
+================================================
+
+A requisição DELETE como o proprio nome já sugere, serve para excluir um dado na base recebido pela API.
+
+A estrutura do código em cypress é composta por method,url e headers
+
+================================================
+Como realizar testes de falha em API
+================================================
+
+Para realizar um teste de falha na API, precisamos utilizar a cláusula  “failOnStatusCode: false” no corpo da requisição
+
+Essa cláusula informa ao cypress que é para falhar quando o código de retorno for diferente de 200.
+
+Vamos ao exemplo...
+
+================================================
+Utilizando Custom Commands no Cypress
+================================================
+
+Para simplificar o código e deixa-lo mais reutilizável, utilizamos a opçao de Custom Commands.
+
+Como o próprio nome já sugere, sao comandos customizados pelo proprio QA.
+
+Vamos ao exemplo...
+
+
+================================================
+Utilizando arquivo .Json na pasta Fixtures
+================================================
+
+Assim como o Custom Commands, é possível simplificar e reutilizar o body da API.
+
+Utilizamos desta forma o arquivo .Json para isso
+
+Vamos ao exemplo...
+
+
+================================================
+Organizando os testes com Context
+================================================
+
+O comando Context é utilizado para organizar o layout de execuções no terminal
+
+Ele facilita na apresentaçao da execução, organizando e estruturando cada caso de teste
