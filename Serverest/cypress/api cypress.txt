@@ -85,6 +85,18 @@ Agora, vamos adicionar a pasta que criamos na aula anterior no Vscode. Para isso
 Pronto, temos a pasta do projeto adicionada com sucesso ao vscode
 
 ================================================
+O que significa cada pasta de um projeto em Cypress
+================================================
+
+Ao adicionar um projeto ao vscode, vemos essa estrutura de pastas.
+
+pasta e2e é onde ficam armazenados os arquivos de teste em cypress, sejam para api ou web
+
+pasta fixtures é onde ficam armazenados os arquivos json para testes de api que iremos utilizar neste curso
+
+pasta support é onde ficam armazenados os arquivos de comandos customizados ou custom commands que iremos utilizar neste curso também
+
+================================================
 Requisição POST
 ================================================
 
