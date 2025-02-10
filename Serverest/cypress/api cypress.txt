@@ -74,7 +74,7 @@ Pronto, ja temos o projeto base criado dentro da pasta.
 Como instalar e configurar o Vscode
 ================================================
 
-Para baixar o Vscode, basta persquisar por vscode no google e ele irá trazer o site oficial. Lá, realizamos o download do programa.
+Para baixar o Vscode, basta ir no site oficial e baixar a versao para seu sistema operacional.
 
 Para instalar, é só seguir as instruções e ao final teremos o vscode instalado na maquina.
 
