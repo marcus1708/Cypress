@@ -1,0 +1,4 @@
+{
+    "cria_usuario":{"nome": "QA","email": "qa@qa.com.br","password": "teste","administrador": "true"},
+    "atual_usuario":{"nome": "QA Sr","email": "qa@qa.com.br","password": "teste","administrador": "true"}
+}

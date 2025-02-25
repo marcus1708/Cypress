@@ -1,0 +1,4 @@
+{
+    "cria_produto":{"nome": "PS5","preco": 200,"descricao": "GAME","quantidade": 500},
+    "atual_produto":{"nome": "PS5 Slim","preco": 200,"descricao": "GAME","quantidade": 500}
+}

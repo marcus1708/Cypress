@@ -1,0 +1,4 @@
+{
+    "login_ok":{"email": "qa@qa.com.br","password": "teste"},
+    "login_erro":{"email": "qa@qa.com.br","password": "teste11"}
+}
