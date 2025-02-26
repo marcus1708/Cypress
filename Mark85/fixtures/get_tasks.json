@@ -1,0 +1,8 @@
+{
+    "list":{
+        "user":{"name": "marcus souza","email": "marcus@qa.com","password": "000000"},
+        "tasks":[{"_id": "67b9e540fd2f4a0f8b55f595","name": "tarefa 1","is_done": false,"tags": ["1","2","3"],"user": "67b92c07cba999f45680ce20"},
+                 {"_id": "67b9e54afd2f4a0f8b55f599","name": "tarefa 2","is_done": false,"tags": ["1","2","3"],"user": "67b92c07cba999f45680ce20"},
+                 {"_id": "67b9e54afd2f4a0f8b55f599","name": "tarefa 3","is_done": false,"tags": ["1","2","3"],"user": "67b92c07cba999f45680ce20"}]
+    }
+}
