@@ -1,0 +1,8 @@
+{
+    "login" : {"name": "marcus souza","email": "marcus@qa.com","password": "000000"},
+    "inv_passw" : {"name": "marcus souza","email": "marcus@qa.com","password": "111111"},
+    "inv_email" : {"name": "marcus souza","email": "marcus@QA.com","password": "111111"},
+    "no_name" : {"email": "marcus@qa.com","password": "000000"},
+    "no_email" : {"name": "marcus souza","password": "000000"},
+    "no_passw" : {"name": "marcus souza","email": "marcus@qa.com"}
+}
