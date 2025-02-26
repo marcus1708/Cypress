@@ -7,7 +7,6 @@ describe('API do Serverest', () =>{
           expect(response.status).to.eq(201)
           expect(response.body.message).to.eq('Cadastro realizado com sucesso')
           Cypress.env('id', response.body._id)})
-      
     })
     it('Teste de Falha - Cadastra Usuário já existente', () => {
       cy.fixture('usuario').then(function(usuario){ 
