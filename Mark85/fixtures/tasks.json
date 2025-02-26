@@ -1,0 +1,10 @@
+{
+    "create":{
+        "user":{"name": "marcus souza","email": "marcus@qa.com","password": "000000"},
+        "task":{"name": "tarefa","tags": ["1","2","3"]}
+    },
+    "dup":{
+        "user":{"name": "marcus souza","email": "marcus@qa.com","password": "000000"},
+        "task":{"name": "tarefa","tags": ["1","2","3"]}
+    }
+}
