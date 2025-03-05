@@ -8,6 +8,11 @@
   },
   "author": "Marcus Vinicius B de Souza",
   "license": "MIT",
+  "devDependencies": {
+    "cypress-mochawesome-reporter": "^3.8.2",
+    "cypress-multi-reporters": "^2.0.5",
+    "mocha-junit-reporter": "^2.2.1"
+  }
   "repository": {
     "type": "git",
     "url": "git+https://github.com/marcus1708/Serverest.git"
