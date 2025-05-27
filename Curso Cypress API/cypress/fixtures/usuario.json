@@ -1,0 +1,15 @@
+{
+    "cria_usuario":{
+        "nome": "Automacao Cypress",
+        "email": "teste@qa.com",
+        "password": "teste",
+        "administrador": "true"
+    },
+    "atlz_usuario":
+    {
+        "nome": "Automacao Cypress Udemy",
+        "email": "teste@qa.com",
+        "password": "teste",
+        "administrador": "true"
+    }
+}

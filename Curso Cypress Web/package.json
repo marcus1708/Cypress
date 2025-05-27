@@ -1,0 +1,16 @@
+{
+  "name": "proj_cypress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "login": "cypress run --spec cypress/e2e/login.cy.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress-mochawesome-reporter": "^3.8.2",
+    "cypress-multi-reporters": "^2.0.5"
+  }
+}

@@ -1,0 +1,8 @@
+{
+    "criar":{
+        "nome":"Cafe",
+        "preco":"50",
+        "descricao":"Cafe frapucchino",
+        "quantidade":"10"
+    }
+}

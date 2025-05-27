@@ -1,0 +1,14 @@
+{
+    "cria_produto":{
+        "nome": "Curso Cypress",
+        "preco": 200,
+        "descricao": "Curso",
+        "quantidade": 100
+      },
+      "atlz_produto":{
+        "nome": "Curso Cypress API",
+        "preco": 300,
+        "descricao": "Curso API",
+        "quantidade": 150
+      }
+}
